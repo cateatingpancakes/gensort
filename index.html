@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="GenSort is an interactive sorter that helps you rank your favorite media and more using a customizable ELO algorithm, client-side.">
+
+        <title>GenSort</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+        <link rel="icon" href="favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="style.css" type="text/css">
+
+        <script src="app.js" type="text/javascript" defer></script>
+    </head>
+
+    <body>
+        <header>
+            <h1>GenSort</h1>
+        </header>
+
+        <main>    
+            <div class="main-grid">
+                <form class="input-form">
+                    <h2>Input</h2>
+
+                    <label for="sort-targets">Sorting targets:</label>
+                    <textarea id="sort-targets" placeholder="Input items to be sorted, separated by a newline"></textarea>
+
+                    <button class="action-button" id="action-submit">Submit</button>
+                </form>
+
+                <form class="selector-form">
+                    <h2>Selector</h2>
+                    <p>Completed: <span id="rounds-completed"></span></p>
+                    
+                    <div class="selector">
+                        <button id="choice-a"></button>
+                        <button id="choice-b"></button>
+                    </div>
+
+                    <button class="action-button" id="action-skip">Skip</button>
+                </form>
+
+                <form class="parameters-form">
+                    <h2>Parameters</h2>
+
+                    <div class="input-box">
+                        <input type="text" id="param-rounds" placeholder="100">
+                        <label for="param-rounds">rounds</label>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="text" id="param-forget" placeholder="16">
+                        <label for="param-forget">forget last</label>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="text" id="param-rating" placeholder="1200">
+                        <label for="param-rating">initial rating</label>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="text" id="param-log-base" placeholder="10">
+                        <label for="param-log-base">log base</label>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="text" id="param-k-factor" placeholder="48">
+                        <label for="param-k-factor">k-factor</label>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="text" id="param-divide-by" placeholder="400">
+                        <label for="param-divide-by">divide-by</label>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="text" id="param-sigma" placeholder="32">
+                        <label for="param-sigma">sigma</label>
+                    </div>
+
+                    <div>
+                        <button class="action-button" id="action-load">Load</button>
+                        <button class="action-button" id="action-force">Force</button>
+                    </div>
+                </form>
+
+                <form class="score-form">
+                    <h2>Score</h2>
+
+                    <div class="score-box" id="score-box">
+
+                    </div>
+
+                    <button class="action-button hidden" id="action-hide">Hide</button>
+                </form>
+            </div>
+        </main>
+
+        <footer>
+            <p>made by <a href="https://github.com/cateatingpancakes">cateatingpancakes</a></p>
+        </footer>
+    </body>
+</html>

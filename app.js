@@ -1,5 +1,6 @@
 const PLAYER_A = 0;
 const PLAYER_B = 1;
+const NEITHER = 2;
 
 const RESET = 0;
 const CONTINUE = 1;
@@ -151,8 +152,19 @@ function getNewRatings(ratingA, ratingB, winner) {
     let expectedA = expectedScore(ratingA, ratingB, PLAYER_A);
     let expectedB = expectedScore(ratingA, ratingB, PLAYER_B);
 
-    let scoreA = (winner === PLAYER_A) ? 1 : 0;
-    let scoreB = (winner === PLAYER_B) ? 1 : 0;
+    let scoreA = 0;
+    let scoreB = 0;
+
+    if(winner === PLAYER_A) {
+        scoreA += 1;
+    } else if(winner === PLAYER_B) {
+        scoreB += 1;
+    } else if(winner === NEITHER) {
+        scoreA += 0.5;
+        scoreB += 0.5;
+    } else {
+        return;
+    }
 
     let newRatingA = ratingA + params["k-factor"] * (scoreA - expectedA);
     let newRatingB = ratingB + params["k-factor"] * (scoreB - expectedB);
@@ -239,7 +251,9 @@ actionSubmit.addEventListener("click", (event) => {
 });
 
 actionSkip.addEventListener("click", (event) => {
+    declareWinner(NEITHER);
     completeRound(CONTINUE);
+    showResults(NO_FORCE);
     nextMatch();
 });
 

@@ -90,6 +90,17 @@ function updateHistory(lastMatch) {
     }
 }
 
+function historyContains(a, b) {
+    for(let i = 0; i < matchHistory.length; i++) {
+        if((matchHistory[i][0] === a && matchHistory[i][1] === b) || 
+           (matchHistory[i][1] === a && matchHistory[i][0] === b)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 function selectRandom(weightedList) {
     let totalWeight = weightedList.reduce((currentTotal, element) => {
         return currentTotal + element["weight"];
@@ -158,9 +169,7 @@ function generateMatch() {
 
     for(let i = 0; i < scoreboard.length; i++) {
         for(let j = i + 1; j < scoreboard.length; j++) {
-            if(!matchHistory.includes([i, j]) &&
-               !matchHistory.includes([j, i])) {
-                /* Second check should be redundant */
+            if(!historyContains(i, j)) {
                 matches.push({
                     "match": [i, j],
                     "weight": gaussianWeight(scoreboard[i]["rating"], scoreboard[j]["rating"])
